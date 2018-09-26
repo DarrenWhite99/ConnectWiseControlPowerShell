@@ -100,7 +100,7 @@ Will return the last contact of the machine with that GUID.
 Will issue a command against a given machine and return the results.
 ## SYNTAX
 ```powershell
-Invoke-CWCCommand [-Server] <Object> [-GUID] <Object> [-User] <Object> [-Password] <Object> [[-Command] <Object>] [[-TimeOut] <Object>] [<CommonParameters>]
+Invoke-CWCCommand [-Server] <Object> [-GUID] <Object> [-User] <Object> [-Password] <Object> [[-Command] <Object>] [[-TimeOut] <Object>] [-PowerShell] [<CommonParameters>]
 ```
 ## DESCRIPTION
 
@@ -166,6 +166,18 @@ Default value                10000
 Accept pipeline input?       false
 Accept wildcard characters?  false
 ```
+
+### -Powershell &lt;Object&gt;
+Issues the command in a powershell session.
+```
+Required?                    false
+Position?                    named
+Default value                False
+Accept pipeline input?       false
+Accept wildcard characters?  false
+```
+
+
 ## INPUTS
 
 ## OUTPUTS
@@ -187,6 +199,6 @@ Will return the hostname of the machine.
  
 ### EXAMPLE 2
 ```powershell
-Invoke-CWCCommand -Server $Server -GUID $GUID -User $User -Password $Password -TimeOut 120000 -Command 'powershell "iwr https://bit.ly/ltposh | iex; Restart-LTService"'
+Invoke-CWCCommand -Server $Server -GUID $GUID -User $User -Password $Password -TimeOut 120000 -Command 'iwr "https://bit.ly/ltposh" | iex; Restart-LTService' -PowerShell
 ```
 Will restart the Automate agent on the target machine.
